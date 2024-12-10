@@ -3,7 +3,14 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
 
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}", // Lägg till om du använder `app`-mappen
+    "./pages/**/*.{js,ts,jsx,tsx}", // För `pages`-mappen
+    "./components/**/*.{js,ts,jsx,tsx}", // För komponenter
+    "./src/**/*.{js,ts,jsx,tsx}", // Om du använder `src`-mappen
+  ],
+
+
   theme: {
     extend: {
       colors: {
