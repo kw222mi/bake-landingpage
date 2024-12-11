@@ -6,13 +6,13 @@ import { useState } from "react";
 import {navigation} from "../constants/index"
 import { useRouter } from "next/router";
 import Button from "./Button";
+import { HamburgerMenu } from "./design/Header";
+import MenuSvg from "@/assets/svg/MenuSvg";
+import bakery from "@/assets/bakery.jpg"
+import Image from "next/image";
 
 const Header = () => {
-
-
   const [openNavigation, setOpenNavigation] = useState(false);
-
-
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -38,7 +38,9 @@ const Header = () => {
       }`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a className="block w-[12rem] xl:mr-8" href="#hero"></a>
+        <a className="block w-[12rem] xl:mr-8" href="#hero">
+          <Image src={bakery} width={50} height={50} alt="Bakery" />
+        </a>
 
         <nav
           className={`${
@@ -53,12 +55,14 @@ const Header = () => {
                 onClick={handleClick}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? "lg:hidden" : ""
-                } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold  lg:leading-5 lg:hover:text-n-1 xl:px-12`}
+                } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold lg:leading-5 lg:hover:text-n-1 xl:px-12`}
               >
                 {item.title}
               </a>
             ))}
           </div>
+
+          <HamburgerMenu />
         </nav>
 
         <a
@@ -75,7 +79,9 @@ const Header = () => {
           className="ml-auto lg:hidden"
           px="px-3"
           onClick={toggleNavigation}
-        ></Button>
+        >
+          <MenuSvg openNavigation={openNavigation} />
+        </Button>
       </div>
     </div>
   );
